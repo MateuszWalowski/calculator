@@ -3,6 +3,7 @@
 window.addEventListener("load", start);
 document.querySelector("#clear").addEventListener("click", clear);
 document.querySelector("#doround").addEventListener("click", checkbox);
+document.querySelector("#decimals").addEventListener("change", checkbox);
 
 var mathresults = [];
 var mathresultsrounded = [];
@@ -34,6 +35,7 @@ function adding() {
   var mathresultsnocomma = mathresults.join(" ");
   document.querySelector("#results > p").innerHTML = mathresultsnocomma;
   scrollToBottom();
+  checkbox();
 }
 
 function substracting() {
@@ -44,6 +46,7 @@ function substracting() {
   var mathresultsnocomma = mathresults.join(" ");
   document.querySelector("#results > p").innerHTML = mathresultsnocomma;
   scrollToBottom();
+  checkbox();
 }
 
 function multiplying() {
@@ -54,6 +57,7 @@ function multiplying() {
   var mathresultsnocomma = mathresults.join(" ");
   document.querySelector("#results > p").innerHTML = mathresultsnocomma;
   scrollToBottom();
+  checkbox();
 }
 
 function dividing() {
@@ -64,6 +68,7 @@ function dividing() {
   var mathresultsnocomma = mathresults.join(" ");
   document.querySelector("#results > p").innerHTML = mathresultsnocomma;
   scrollToBottom();
+  checkbox();
 }
 
 function clear() {
@@ -85,7 +90,6 @@ function checkbox() {
   } else {
     console.log("unchecked");
     document.querySelector("#results > p").innerHTML = mathresults;
-
     var mathresultsnocomma = mathresults.join(" ");
     document.querySelector("#results > p").innerHTML = mathresultsnocomma;
     scrollToBottom();
@@ -93,20 +97,86 @@ function checkbox() {
 }
 
 function rounding() {
-  const mathresultstoround = mathresults.slice();
+  var mathresultstoround = mathresults.slice();
 
   var x;
   for (x = 0; x < mathresultstoround.length; x++) {
     mathresultstoround[x] = mathresultstoround[x].replace("<br>", "");
   }
 
-  var y;
-  for (y = 0; y < mathresultstoround.length; y++) {
-    mathresultstoround[y] = parseFloat(mathresultstoround[y]).toFixed(0);
-    mathresultstoround[y] = mathresultstoround[y] + "<br>";
-    mathresultsrounded.push(mathresultstoround[y]);
+  if (document.querySelector("#decimals").value == "0") {
+    mathresultsrounded = [];
+    var y;
+    for (y = 0; y < mathresultstoround.length; y++) {
+      mathresultstoround[y] = parseFloat(mathresultstoround[y]).toFixed(0);
+      mathresultstoround[y] = mathresultstoround[y] + "<br>";
+      mathresultsrounded.push(mathresultstoround[y]);
+    }
+  } else if (document.querySelector("#decimals").value == "1") {
+    mathresultsrounded = [];
+    var y;
+    for (y = 0; y < mathresultstoround.length; y++) {
+      mathresultstoround[y] = parseFloat(mathresultstoround[y]).toFixed(1);
+      mathresultstoround[y] = mathresultstoround[y] + "<br>";
+      mathresultsrounded.push(mathresultstoround[y]);
+    }
+  } else if (document.querySelector("#decimals").value == "2") {
+    mathresultsrounded = [];
+    var y;
+    for (y = 0; y < mathresultstoround.length; y++) {
+      mathresultstoround[y] = parseFloat(mathresultstoround[y]).toFixed(2);
+      mathresultstoround[y] = mathresultstoround[y] + "<br>";
+      mathresultsrounded.push(mathresultstoround[y]);
+    }
+  } else if (document.querySelector("#decimals").value == "3") {
+    mathresultsrounded = [];
+    var y;
+    for (y = 0; y < mathresultstoround.length; y++) {
+      mathresultstoround[y] = parseFloat(mathresultstoround[y]).toFixed(3);
+      mathresultstoround[y] = mathresultstoround[y] + "<br>";
+      mathresultsrounded.push(mathresultstoround[y]);
+    }
+  } else if (document.querySelector("#decimals").value == "4") {
+    mathresultsrounded = [];
+    var y;
+    for (y = 0; y < mathresultstoround.length; y++) {
+      mathresultstoround[y] = parseFloat(mathresultstoround[y]).toFixed(4);
+      mathresultstoround[y] = mathresultstoround[y] + "<br>";
+      mathresultsrounded.push(mathresultstoround[y]);
+    }
+  } else if (document.querySelector("#decimals").value == "5") {
+    mathresultsrounded = [];
+    var y;
+    for (y = 0; y < mathresultstoround.length; y++) {
+      mathresultstoround[y] = parseFloat(mathresultstoround[y]).toFixed(5);
+      mathresultstoround[y] = mathresultstoround[y] + "<br>";
+      mathresultsrounded.push(mathresultstoround[y]);
+    }
+  } else if (document.querySelector("#decimals").value == "6") {
+    mathresultsrounded = [];
+    var y;
+    for (y = 0; y < mathresultstoround.length; y++) {
+      mathresultstoround[y] = parseFloat(mathresultstoround[y]).toFixed(6);
+      mathresultstoround[y] = mathresultstoround[y] + "<br>";
+      mathresultsrounded.push(mathresultstoround[y]);
+    }
+  } else if (document.querySelector("#decimals").value == "7") {
+    mathresultsrounded = [];
+    var y;
+    for (y = 0; y < mathresultstoround.length; y++) {
+      mathresultstoround[y] = parseFloat(mathresultstoround[y]).toFixed(7);
+      mathresultstoround[y] = mathresultstoround[y] + "<br>";
+      mathresultsrounded.push(mathresultstoround[y]);
+    }
+  } else if (document.querySelector("#decimals").value == "8") {
+    mathresultsrounded = [];
+    var y;
+    for (y = 0; y < mathresultstoround.length; y++) {
+      mathresultstoround[y] = parseFloat(mathresultstoround[y]).toFixed(8);
+      mathresultstoround[y] = mathresultstoround[y] + "<br>";
+      mathresultsrounded.push(mathresultstoround[y]);
+    }
   }
-
   console.log(mathresultsrounded);
   var mathresultsroundednocomma = mathresultsrounded.join(" ");
   document.querySelector("#results > p").innerHTML = mathresultsroundednocomma;
