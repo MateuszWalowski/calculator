@@ -2,8 +2,10 @@
 
 window.addEventListener("load", start);
 document.querySelector("#clear").addEventListener("click", clear);
+document.querySelector("#doround").addEventListener("click", checkbox);
 
 var mathresults = [];
+var mathresultsrounded = [];
 document.querySelector("#results > p").textContent = mathresults;
 
 function start() {
@@ -42,7 +44,6 @@ function substracting() {
   var mathresultsnocomma = mathresults.join(" ");
   document.querySelector("#results > p").innerHTML = mathresultsnocomma;
   scrollToBottom();
-
 }
 
 function multiplying() {
@@ -53,7 +54,6 @@ function multiplying() {
   var mathresultsnocomma = mathresults.join(" ");
   document.querySelector("#results > p").innerHTML = mathresultsnocomma;
   scrollToBottom();
-
 }
 
 function dividing() {
@@ -64,7 +64,6 @@ function dividing() {
   var mathresultsnocomma = mathresults.join(" ");
   document.querySelector("#results > p").innerHTML = mathresultsnocomma;
   scrollToBottom();
-
 }
 
 function clear() {
@@ -77,4 +76,39 @@ function clear() {
 function scrollToBottom() {
   var div = document.querySelector("#results > p");
   div.scrollIntoView(false);
+}
+
+function checkbox() {
+  if (document.querySelector("#doround").checked) {
+    console.log("checked");
+    rounding();
+  } else {
+    console.log("unchecked");
+    document.querySelector("#results > p").innerHTML = mathresults;
+
+    var mathresultsnocomma = mathresults.join(" ");
+    document.querySelector("#results > p").innerHTML = mathresultsnocomma;
+    scrollToBottom();
+  }
+}
+
+function rounding() {
+  const mathresultstoround = mathresults.slice();
+
+  var x;
+  for (x = 0; x < mathresultstoround.length; x++) {
+    mathresultstoround[x] = mathresultstoround[x].replace("<br>", "");
+  }
+
+  var y;
+  for (y = 0; y < mathresultstoround.length; y++) {
+    mathresultstoround[y] = parseFloat(mathresultstoround[y]).toFixed(0);
+    mathresultstoround[y] = mathresultstoround[y] + "<br>";
+    mathresultsrounded.push(mathresultstoround[y]);
+  }
+
+  console.log(mathresultsrounded);
+  var mathresultsroundednocomma = mathresultsrounded.join(" ");
+  document.querySelector("#results > p").innerHTML = mathresultsroundednocomma;
+  scrollToBottom();
 }
